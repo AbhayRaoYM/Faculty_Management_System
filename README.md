@@ -1,6 +1,5 @@
 # Faculty_Management_System
-This project is a simple full-stack web-based Faculty Management System built using HTML, CSS, JavaScript (Frontend), Node.js with Express (Backend), and MySQL (Database). 
-It allows university administrators to manage faculty information efficiently including their personal details, subject allocations, attendance records, salary entries, and exam invigilation duties.
+This project is a simple full-stack web-based Faculty Management System built using HTML, CSS, JavaScript (Frontend), Node.js with Express (Backend), and MySQL (Database).  It allows university administrators to manage faculty information efficiently including their personal details, subject allocations, attendance records, salary entries, and exam invigilation duties.
 
 ## Features
 * Add, update, delete, and view faculty records
