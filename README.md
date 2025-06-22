@@ -4,7 +4,8 @@ This project is a simple full-stack web-based Faculty Management System built us
 ## Features
 * Add, update, delete, and view faculty records
 * Assign subjects to faculty for each semester
-* Track faculty attendance daily
-* Manage salary records by month and year
-* Allocate and view exam invigilation duties
+* Allocate subjects to faculty
+* Introduce new department based on college requirements 
+* Manage salary records by semester and year
 * Form-based user interface
+* Avoids unnecessary deletion of faculty before resolving their salary and subject allotments 
