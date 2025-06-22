@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Department Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="department.html">Department</a></li>
+      <li><a href="subject.html">Subject</a></li>
+      <li><a href="facultysubject.html">Faculty-Subject</a></li>
+      <li><a href="salary.html">Salary</a></li>
+    </ul>
+  </nav>
+
+  <!-- Add Department Form -->
+  <h2>Add Department</h2>
+  <form id="departmentForm">
+    <label>Department Name:</label>
+    <input type="text" name="departName" required>
+    <button type="submit">Add Department</button>
+  </form>
+
+  <!-- Department List -->
+  <h2>All Departments</h2>
+  <button onclick="fetchDepartments()">Refresh List</button>
+
+  <table id="departmentTable">
+    <thead>
+      <tr>
+        <th>Department ID</th>
+        <th>Department Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will go here -->
+    </tbody>
+  </table>
+
+  <!-- JS for submitting and fetching -->
+  <script>
+    // Add new department
+    document.getElementById("departmentForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const data = { departName: this.departName.value };
+      const res = await fetch("/api/department", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+      alert(res.ok ? "Department added!" : "Error");
+      this.reset();
+      fetchDepartments(); // Refresh after adding
+    });
+
+    // Fetch and display all departments
+    async function fetchDepartments() {
+      const res = await fetch("/api/department");
+      const data = await res.json();
+
+      const tbody = document.querySelector("#departmentTable tbody");
+      tbody.innerHTML = "";
+
+      data.forEach(dept => {
+        const row = `<tr>
+          <td>${dept.DepartID}</td>
+          <td>${dept.DepartName}</td>
+        </tr>`;
+        tbody.innerHTML += row;
+      });
+    }
+
+    // Initial load
+    fetchDepartments();
+  </script>
+</body>
+</html>
