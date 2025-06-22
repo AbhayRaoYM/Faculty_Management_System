@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Subject Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="department.html">Department</a></li>
+      <li><a href="subject.html">Subject</a></li>
+      <li><a href="facultysubject.html">Faculty-Subject</a></li>
+      <li><a href="salary.html">Salary</a></li>
+    </ul>
+  </nav>
+
+  <!-- Add Subject Form -->
+  <h2>Add Subject</h2>
+  <form id="subjectForm">
+    <label>Subject Name:</label>
+    <input type="text" name="subName" required>
+
+    <label>Department ID:</label>
+    <input type="number" name="departID" required>
+
+    <button type="submit">Add Subject</button>
+  </form>
+
+  <!-- Subject List -->
+  <h2>All Subjects</h2>
+  <button onclick="fetchSubjects()">Refresh List</button>
+
+  <table id="subjectTable">
+    <thead>
+      <tr>
+        <th>Subject ID</th>
+        <th>Subject Name</th>
+        <th>Department ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Subject rows will be populated here -->
+    </tbody>
+  </table>
+
+  <!-- JavaScript -->
+  <script>
+    // Add subject
+    document.getElementById("subjectForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const data = {
+        subName: this.subName.value,
+        departID: parseInt(this.departID.value)
+      };
+
+      const res = await fetch("/api/subject", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      alert(res.ok ? "Subject added!" : "Error adding subject");
+      this.reset();
+      fetchSubjects();
+    });
+
+    // Fetch and list subjects
+    async function fetchSubjects() {
+      const res = await fetch("/api/subject");
+      const subjects = await res.json();
+
+      const tbody = document.querySelector("#subjectTable tbody");
+      tbody.innerHTML = "";
+
+      subjects.forEach(sub => {
+        const row = `<tr>
+          <td>${sub.SubID}</td>
+          <td>${sub.SubName}</td>
+          <td>${sub.DepartID}</td>
+          <td>
+            <button onclick="deleteSubject(${sub.SubID})">Delete</button>
+          </td>
+        </tr>`;
+        tbody.innerHTML += row;
+      });
+    }
+
+    // Delete subject by ID
+    async function deleteSubject(subID) {
+      if (!confirm("Are you sure you want to delete this subject?")) return;
+
+      const res = await fetch(`/api/subject/${subID}`, {
+        method: "DELETE"
+      });
+
+      alert(res.ok ? "Subject deleted!" : "Error deleting subject");
+      fetchSubjects();
+    }
+
+    // Load subjects on page load
+    fetchSubjects();
+  </script>
+
+</body>
+</html>

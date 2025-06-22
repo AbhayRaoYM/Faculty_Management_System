@@ -1,0 +1,135 @@
+/* Center the page content */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #fff;
+  color: #111;
+}
+
+/* Center all h2 headings */
+h2 {
+  text-align: center;
+  color: #004400;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Style and center the form */
+form {
+  width: 320px;
+  border: 1px solid #ccc;
+  padding: 25px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+/* Form field labels */
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+/* Input fields and dropdowns */
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Submit and other buttons */
+button {
+  background-color: #0a8800;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #066600;
+}
+
+/* Optional table styling if needed on this page */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #e2e2e2;
+  font-weight: bold;
+}
+
+.green-button {
+  background-color: green;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.green-button:hover {
+  background-color: darkgreen;
+}
+
+/* Navigation bar */
+.navbar {
+  background-color: #004400;
+  padding: 10px 0;
+  margin-bottom: 30px;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 12px;
+}
+
+.navbar a:hover {
+  background-color: #066600;
+  border-radius: 5px;
+}
+
